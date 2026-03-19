@@ -34,7 +34,7 @@ phpconfig:
 #
 persistence:
   enabled: true
-  size: 10Gi
+  size: 8Gi
   accessMode: ReadWriteOnce
   # Set storage class here
   storageClass: ""
@@ -69,15 +69,15 @@ mariadb:
   jobName: "createmariadbserver"
   auth:
     rootPassword: ""
-    database: ""
-    username: ""
-    password: ""
+    database: "ocsdb"
+    username: "mysqloscuser"
+    password: "mysqlocsPass*"
 
 ## Allowing use of ingress controllers
 ## https://kubernetes.io/docs/concepts/services-networking/ingress/
 #
 ingress:
-  enabled: true
+  enabled: false
   labels: {}
   hosts:
     - ""
@@ -130,3 +130,7 @@ metrics:
       requests:
         cpu: 100m
         memory: 100Mi
+
+service:
+  type: ClusterIP
+  port: 80
